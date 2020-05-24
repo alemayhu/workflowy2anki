@@ -62,7 +62,7 @@ export default class DeckHandler
 		let i = -1
 		for line of lines
 			continue if !line
-			if line.match(/^-/)
+			if line.match(/^-/) || !cards[i]
 				i = i + 1
 				cards[i] = {name: line.replace('- ', '').trim(), backSide: ''}
 			else
