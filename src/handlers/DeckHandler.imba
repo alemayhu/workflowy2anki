@@ -53,21 +53,23 @@ export default class DeckHandler
 		{name, cards, inputType, style}
 	
 	def handleText contents, deckName = null
-		const lines = contents.split('\n')
+		const lines = contents.trim().split('\n')
 		const style = null
 		const inputType = 'text'
 		const name = lines.shift()
 		console.log('lines', lines)
 		let cards = []
-		let i = -1
+		let i = 0
 		for line of lines
+			console.log('line', line)
 			continue if !line
 			if line.match(/^-/) || !cards[i]
-				i = i + 1
 				cards[i] = {name: line.replace('- ', '').trim(), backSide: ''}
 			else
 				cards[i].backSide += line.replace('  - ', '').trim()
+				i = i + 1
 		
+		console.log('cards', cards)
 		{name, cards, inputType, style}
 	
 	def handleOPML contents, deckName = null
