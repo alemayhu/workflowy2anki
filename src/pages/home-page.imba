@@ -18,18 +18,13 @@ tag home-page
 						"Convert WorkFlowy "
 						<a .text-blue-700 .underline href="https://www.youtube.com/watch?v=CSmbnaPZVHE"> "outlines "
 						" to Anki cards easily."
-					<div>
-						<div .h-32 .flex .items-center .justify-center :click.clickButton>
-							<n2a-button> "Upload WorkFlowy export"
-							<input #upload-button .hidden :change.fileuploaded type="file" name="resume" accept=".zip,.html,.txt,.opml">
-						<div .flex .items-center .justify-center .flex-col>
-							<h2 .text-2xl> "Alternatively paste below"
-							<div .textarea-container>
-								<textarea[pasted] :paste.pastedText>
-					<.flex .flex-col .items-center>
-						<h2 .font-bold .text-4xl>
-							<a href="#usage" name="usage"> "How it works"
-						<iframe .self-center width="560" height="315" src="https://www.youtube.com/embed/b3eQ0exhdz4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>						
+					<div .h-32 .flex .items-center .justify-center :click.clickButton>
+						<n2a-button> "Upload WorkFlowy export"
+						<input #upload-button .hidden :change.fileuploaded type="file" name="resume" accept=".zip,.html,.txt,.opml">
+					<div .flex .items-center .justify-center .flex-col>
+						<h2 .text-2xl> "Alternatively paste below"
+						<div .textarea-container>
+							<textarea[pasted] :paste.pastedText>
 				elif state == 'uploading'
 					<div .flex .flex-col .justify-center .items-center .h-screen>
 						<h2 .text-4xl> "One moment, building your deck 👷🏾‍♀️"
