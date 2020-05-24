@@ -1,8 +1,8 @@
 {
   "name": "workflowy2anki",
-  "description": "Go from Workflowy toggle list to Anki Cards easily!",
+  "description": "Go from WorkFlowy toggle list to Anki Cards easily!",
   "keywords": [
-    "Workflowy",
+    "WorkFlowy",
     "anki",
     "workflowy2anki",
     "imba",
@@ -34,7 +34,6 @@
     "jszip": "^3.3.0",
     "postcss-loader": "^3.0.0",
     "script-loader": "^0.7.2",
-    "showdown": "^1.9.1",
     "style-loader": "^1.2.1",
     "tailwindcss": "^1.4.6"
   },

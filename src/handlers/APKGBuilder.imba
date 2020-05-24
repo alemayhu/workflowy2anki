@@ -3,12 +3,8 @@ const fs = require('fs')
 
 import AnkiExport from 'anki-apkg-export'
 import ExpressionHelper from './ExpressionHelper'
-import MarkdownHandler from './MarkdownHandler'
 
 export default class APKGBuilder
-
-	def constructor md
-		self.md = md
 
 	// Try to avoid name conflicts and invalid characters by hashing
 	def newImageName input
@@ -30,7 +26,6 @@ export default class APKGBuilder
 			// TODO: provide our own default amazing style
 			exporter = AnkiExport.new(deck.name)	
 
-		const converter = MarkdownHandler()
 		for card in deck.cards
 			// Try getting Markdown image, should it be recursive for HTML and Markdown?
 			let imageMatch = ExpressionHelper.imageMatch(card.backSide)
@@ -57,9 +52,8 @@ export default class APKGBuilder
 			// This is fragile thougg and won't handle multiline properly
 			if ExpressionHelper.latex?(card.backSide)
 				card.backSide = "[latex]{card.backSide.trim()}[/latex]"
-			elif inputType != 'HTML'
-				card.backSide = converter.makeHtml(card.backSide)
-
+			elif deck.inputType != 'HTML'
+				throw Error.new('unsupported input type '+deck.inputType)
 			// Hopefully this should perserve headings and other things
 			exporter.addCard(card.name, card.backSide)
 

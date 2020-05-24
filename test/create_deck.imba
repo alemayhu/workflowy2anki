@@ -41,40 +41,7 @@ def main
 	console.time('execution time')
 	console.log('Running tests')
 
-	const artifacts_dir = path.join(__dirname, "artifacts")
-	if not fs.existsSync(artifacts_dir)
-		fs.mkdirSync(artifacts_dir)
-
 	test_fixture('workflowy-export.html', 'DNS flashcards', 2)
-	test_fixture('no-images.html', 'HTML test', 2)
-	test_fixture('with-image.html', 'HTML test', 3)
-	process.exit(0)
-
-	test_fixture('simple-deck.md', 'Workflowy Questions', 3)
-	test_fixture('empty-deck.md', 'Empty Deck', 0)
-
-	const example_dir = path.join(artifacts_dir, 'files')
-	const images = ["Untitled.png", "Untitled 1.png", "Untitled 2.png"]
-	let files = {}
-	for img in images
-		const img_path = path.join(example_dir, img)
-		console.log('img', img_path)
-		files["Workflowy Questions/{img}"] = fs.readFileSync(img_path)
-	test_fixture('with-images.md', 'Workflowy Questions', 3, files)
-
-	// TODO: fix this test
-	// const zip_path = path.join(artifacts_dir, 'Export-952356ce-4c7a-4416-9aaa-6abe99917124.zip')
-	// const zip_data = fs.readFileSync(zip_path)
-	// const zipHandler = ZipHandler.new()	
-	// const _ = await zipHandler.build(zip_data)
-	// eq(zipHandler.filenames().length, 4)
-	
-	// for file in zipHandler.filenames()
-	// 	if ExpressionHelper.document?(file)
-	// 		const deck = DeckHandler.new().build(zipHandler.files[file])
-	// 		const apkgOutput = await APKGBuilder.new().build(null, deck, zipHandler.files)
-	// 		assert.notEqual(apkgOutput, undefined)
-
 
 	console.log('All assertions done 👍🏽')
 	console.timeEnd('execution time')
