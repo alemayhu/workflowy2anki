@@ -9,7 +9,10 @@ export default class DeckHandler
 		firstLine.trim().replace(/^# /, '')
 
 	def build contents, deckName = null
-		self.handleHTML(contents, deckName)
+		if contents.trim().match(/^\</)
+			self.handleHTML(contents, deckName)
+		else
+			self.handleText(contents, deckName)
 	
 	# def appendDefaultStyle s
 	# 	const a = '.card {\nfont-family: arial;\name\nfont-size: 20px;\ntext-align: center;\ncolor: black;\nbackground-color: white;\n'
@@ -37,6 +40,8 @@ export default class DeckHandler
 
 		if cards.length == 0
 			const list_items = dom('body ul').first().children().toArray()
+			if !list_items
+				return null
 			cards = list_items.map do |li|
 				const el = dom(li)
 				const front = el.find('.name .innerContentContainer').first()
@@ -44,3 +49,24 @@ export default class DeckHandler
 				return {name: front, backSide: back}
 
 		{name, cards, inputType, style}
+	
+	def handleText contents, deckName = null
+		const lines = contents.split('\n')
+		const style = null
+		const inputType = 'text'
+		const name = lines.shift()
+		console.log('lines', lines)
+		let cards = []
+		let i = -1
+		for line of lines
+			continue if !line
+			if line.match(/^-/)
+				i = i + 1
+				cards[i] = {front: line.replace('- ', '').trim(), backSide: ''}
+			else
+				cards[i].backSide += line.replace('  - ', '').trim()
+		
+		{name, cards, inputType, style}
+	
+	def handleOPML
+		throw Error.new('to be implemented')

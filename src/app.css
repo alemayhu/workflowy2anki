@@ -4,6 +4,28 @@ body {
 	font-family: 'Baloo 2';
 }
 
+/* Text Area styling from Workflowy */
+textarea {
+	border: 1px solid rgb(236, 238, 240);
+	background: white none repeat scroll 0% 0%;
+	height: 50vh;
+	max-height: 468px;
+	overflow: scroll;
+	padding: 12px;
+	margin: 24px 0px;
+	font-size: 12px;
+	line-height: 20px;
+	font-family: Consolas, Monaco, "Lucida Console", "Andale Mono", monospace;
+	white-space: pre;
+	width: 100%;
+	box-sizing: border-box;
+	display: block;
+	user-select: text;
+}
+.textarea-container {
+	width: 50vw;
+}
+
 /* Tailwind CSS */
 @import "tailwindcss/base";
 

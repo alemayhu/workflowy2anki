@@ -10,6 +10,10 @@ tag home-page
 		const button = document.getElementById('upload-button')
 		button.click()
 	
+	def pastedText event
+		const payload = (event.clipboardData || window.clipboardData).getData('text')
+		console.log('pasted Text', JSON.stringify(payload))
+	
 	def render
 		<self>
 			<page-content .justify-center=(state == 'uploading') .items-center=(state == 'uploading')>
@@ -23,9 +27,9 @@ tag home-page
 							<n2a-button> "Upload WorkFlowy export"
 							<input #upload-button .hidden :change.fileuploaded type="file" name="resume" accept=".zip,.html">
 						<div .flex .items-center .justify-center .flex-col>
-							<h2 .text-2xl> "or Paste"
-							<div>
-								<textarea[pasted] .border-solid .m-4 .border-2 .border-gray-600>
+							<h2 .text-2xl> "Alternatively paste below"
+							<div .textarea-container>
+								<textarea[pasted] onpaste=pastedText>
 					<.flex .flex-col .items-center>
 						<h2 .font-bold .text-4xl>
 							<a href="#usage" name="usage"> "How it works"

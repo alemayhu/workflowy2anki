@@ -15,7 +15,7 @@ def eq lhs, rhs, msg = null
 		console.log('failed to show comparison failure')
 	process.exit(1)
 
-def test_fixture file_name, deck_name, card_count, files = {}
+def test_fixture file_name, deck_name, card_count, files = {}, expectStyle = true
 	try
 		const file_path = path.join(__dirname, "fixtures", file_name)
 		const example = fs.readFileSync(file_path).toString()
@@ -23,7 +23,7 @@ def test_fixture file_name, deck_name, card_count, files = {}
 		let builder = DeckHandler.new(isMarkdown)
 		const deck = builder.build(example)
 		
-		eq(deck.style != undefined, true, "Style is not set")
+		eq(deck.style != undefined, expectStyle, "Style is not set")
 
 		console.log('deck.name', deck.name)
 		eq(deck.name, deck_name, 'comparing deck names')
@@ -41,6 +41,7 @@ def main
 	console.time('execution time')
 	console.log('Running tests')
 
+	test_fixture('workflowy-export.txt', 'List of Scandinavian Countries and Nordic Region', 5, [], false)
 	test_fixture('workflowy-export.html', 'DNS flashcards', 2)
 
 	console.log('All assertions done 👍🏽')
