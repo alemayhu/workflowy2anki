@@ -1,6 +1,6 @@
 # WorkFlowy 2 Anki
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5da03a4d-2c54-4343-8949-33124d2211e5/deploy-status)](https://app.netlify.com/sites/vibrant-swirles-654fce/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4d818752-c360-4ca5-afa4-567add475a7b/deploy-status)](https://app.netlify.com/sites/eloquent-lamport-a418b8/deploys)
 
 This is tool a to let you convert your WorkFlowy outlines to Anki cards easily.
 
