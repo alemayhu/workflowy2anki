@@ -4,16 +4,6 @@ body {
 	font-family: 'Baloo 2';
 }
 
-/* Colors */
-
-.n2a-blue-bg {
-    background: #3B83F7;
-}
-
-.n2a-blue-text {
-    color: #3B83F7;
-}
-
 /* Tailwind CSS */
 @import "tailwindcss/base";
 

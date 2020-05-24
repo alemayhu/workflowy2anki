@@ -1,22 +1,16 @@
-![Notion 2 Anki](dist/banner.png)
+![Workflowy 2 Anki](dist/banner.png)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5da03a4d-2c54-4343-8949-33124d2211e5/deploy-status)](https://app.netlify.com/sites/vibrant-swirles-654fce/deploys)
 
-This is tool a to let you convert your Notion [toggle lists][tl] to Anki cards easily.
-
-[tl]: https://www.notion.so/Toggles-c720af26b4bd4789b736c140b2dc73fe
+This is tool a to let you convert your Workflowy outlines to Anki cards easily.
 
 ## Background
 
-This project was hacked together after seeing this post on Reddit 
-https://www.reddit.com/r/Anki/comments/g29mzk/cards_imported_from_notion/
-
+TODO:
 
 ## Roadmap
 
-The dream is to have a powerful and easy to use process for producing high quality flashcards. Notion is super easy to use and Notion 2 Anki is just going to make the importing process and controlling the look of the cards / decks smooth. See the [projects page][pa] for the specific topics https://github.com/alemayhu/workflowy2anki/projects/1
-
-[pa]: https://github.com/alemayhu/workflowy2anki/projects/1
+TODO:
 
 ## Contributing
 

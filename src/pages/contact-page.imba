@@ -11,7 +11,7 @@ tag contact-page
 					<a .underline href="mailto:alexander@alemayhu.com"> "alexander@alemayhu.com"
 					<br>
 					<br>
-					"Currently only the Markdown and HTML is supported. "
+					"Currently only the formatted version is supported. "
 					"If you are missing a feature or format, let me know on "
 					<a .underline href="https://github.com/alemayhu/workflowy2anki"> "GitHub"
 					"."

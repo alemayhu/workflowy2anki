@@ -69,6 +69,6 @@ export default class DeckHandler
 				// Before converting to HTML, replace the first dash so we don't end up with a dot on the left side in Anki
 				cards[i] = {name: self.converter.makeHtml(line.replace(/^-\s?/, '')), backSide: ''}
 			else
-				// Prevent Notion from producing crappy Markdown
+				// Prevent Workflowy from producing crappy Markdown
 				cards[i].backSide += "{line.trim()}\n"
 		{name, cards, inputType, style}

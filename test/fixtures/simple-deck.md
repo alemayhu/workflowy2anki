@@ -1,4 +1,4 @@
-# Notion Questions
+# Workflowy Questions
 
 - What is the capital of Kenya?
 
