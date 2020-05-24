@@ -41,6 +41,7 @@ def main
 	console.time('execution time')
 	console.log('Running tests')
 
+	test_fixture('workflowy-export.opml', 'List of Scandinavian Countries and Nordic Region', 5, [], false)
 	test_fixture('workflowy-export.txt', 'List of Scandinavian Countries and Nordic Region', 5, [], false)
 	test_fixture('workflowy-export.html', 'DNS flashcards', 2)
 

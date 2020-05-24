@@ -9,7 +9,9 @@ export default class DeckHandler
 		firstLine.trim().replace(/^# /, '')
 
 	def build contents, deckName = null
-		if contents.trim().match(/^\</)
+		if contents.trim().match(/^\<\?xml/)
+			self.handleOPML(contents, deckName)
+		elif contents.trim().match(/^\</)
 			self.handleHTML(contents, deckName)
 		else
 			self.handleText(contents, deckName)
@@ -68,5 +70,23 @@ export default class DeckHandler
 		
 		{name, cards, inputType, style}
 	
-	def handleOPML
-		throw Error.new('to be implemented')
+	def handleOPML contents, deckName = null
+		const dom = cheerio.load(contents)
+		const outline = dom('body outline')
+		const name = outline.first().attr('text')
+		let outlines = dom('body outline outline').toArray()
+		const inputType = 'OPML'
+		const style = null
+
+
+		const cards = []
+		let i = 0
+		while i < outlines.length
+			const el = dom(outlines[i])
+			const name = el.attr('text').trim()
+			const backSide = el.children().first().attr('text')
+			cards.push({name: name, backSide: backSide})
+			i = i + 2
+		
+		console.log('cards', cards)
+		{name, cards, inputType, style}
