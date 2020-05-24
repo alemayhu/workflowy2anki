@@ -62,7 +62,7 @@ export default class DeckHandler
 			continue if !line
 			if line.match(/^-/)
 				i = i + 1
-				cards[i] = {front: line.replace('- ', '').trim(), backSide: ''}
+				cards[i] = {name: line.replace('- ', '').trim(), backSide: ''}
 			else
 				cards[i].backSide += line.replace('  - ', '').trim()
 		

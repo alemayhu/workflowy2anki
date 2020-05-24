@@ -9,11 +9,7 @@ tag home-page
 	def clickButton
 		const button = document.getElementById('upload-button')
 		button.click()
-	
-	def pastedText event
-		const payload = (event.clipboardData || window.clipboardData).getData('text')
-		console.log('pasted Text', JSON.stringify(payload))
-	
+		
 	def render
 		<self>
 			<page-content .justify-center=(state == 'uploading') .items-center=(state == 'uploading')>
@@ -29,7 +25,7 @@ tag home-page
 						<div .flex .items-center .justify-center .flex-col>
 							<h2 .text-2xl> "Alternatively paste below"
 							<div .textarea-container>
-								<textarea[pasted] onpaste=pastedText>
+								<textarea[pasted] :paste.pastedText>
 					<.flex .flex-col .items-center>
 						<h2 .font-bold .text-4xl>
 							<a href="#usage" name="usage"> "How it works"

@@ -19,18 +19,31 @@ tag app-root
 	prop state = 'ready'
 	prop progress = '0'
 	prop info = ['Ready']
+	prop packages = []
 
 	def mount
 		window.onbeforeunload = do
 			if state != 'ready'
 				return "Conversion in progress. Are you sure you want to stop it?"
 
+
+	def pastedText event
+		self.state = 'uploading'
+
+		const payload = (event.clipboardData || window.clipboardData).getData('text')
+		const file_name = 'virtual-name.txt'
+		const deck = DeckHandler.new().build(payload)
+		const apkg = await APKGBuilder.new().build(null, deck, [file_name])
+		self.packages.push({name: "{deck.name}.apkg", apkg: apkg, deck})
+		self.cards = packages[0].deck.cards
+		state = 'download'
+
+
 	// TODO: refactor DRY
 	def fileuploaded event
 		try
 			const files = event.target.files
 			self.state = 'uploading'
-			self.packages = []
 			for file in files
 				console.log('file', file)
 				if file.name.match(/\.zip$/)
