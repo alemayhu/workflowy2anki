@@ -16,9 +16,9 @@ export default class DeckHandler
 		else
 			self.handleText(contents, deckName)
 	
-	# def appendDefaultStyle s
-	# 	const a = '.card {\nfont-family: arial;\name\nfont-size: 20px;\ntext-align: center;\ncolor: black;\nbackground-color: white;\n'
-	# 	"{s}\n{a}"
+	def appendDefaultStyle s
+		const a = '.card {\nfont-family: arial;\name\nfont-size: 20px;\ntext-align: center;\ncolor: black;\nbackground-color: white;\n'
+		"{s}\n{a}"
 
 	def worklflowyName dom
 		const names = dom('.name .innerContentContainer')
@@ -31,8 +31,8 @@ export default class DeckHandler
 		let name = dom('title').text()
 		name ||= worklflowyName(dom)
 		let style = /<style[^>]*>([^<]+)<\/style>/i.exec(contents)[1]
-		# if style
-		# 	style = appendDefaultStyle(style)
+		if style
+			style = appendDefaultStyle(style)
 		const toggleList = dom('.toggle li').toArray()
 		let cards = toggleList.map do |t|
 			const toggle = dom(t).find('details')

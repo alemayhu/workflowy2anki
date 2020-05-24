@@ -79,6 +79,7 @@ tag app-root
 		for pkg in self.packages
 			FileSaver.saveAs(pkg.apkg, pkg.name)
 		state = 'ready'
+		self.packages = []
 	
 	def render
 		<self>
