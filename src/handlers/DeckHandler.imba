@@ -54,11 +54,11 @@ export default class DeckHandler
 							for part of card.children
 								const notSetBackSide = self.findNullIndex(self.decks[i].cards, "backSide")								
 								if notSetBackSide > -1
-									const text = dom(part).text().trim()
+									const text = dom(part).html()
 									if text
 										self.decks[i].cards[notSetBackSide].backSide = text                
 								else if part.name == 'span'
-									self.decks[i].cards.push({name: dom(part).text(), backSide: null})
+									self.decks[i].cards.push({name: dom(part).html(), backSide: null})
 			i = i + 1
 	
 	def handleText contents, deckName = null
