@@ -30,7 +30,7 @@ tag home-page
 							<h2 .font-bold .text-4xl .text-center> 
 								<a href="#usage" name="usage"> "How it works"
 							<p .text-2xl> 
-								"Below is a screenshot that guides you on how to create decks with this tool."
+								"Below is a screenshot that guides you on how to create decks with this tool. Follow the format and paste or upload when ready."
 						<div>
 							<img src="/how.png">
 						<p>
