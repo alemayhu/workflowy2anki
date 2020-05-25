@@ -1,3 +1,3 @@
 tag page-content
-	<self .block .w-screen .flex .flex-col .h-screen .justify-around>
+	<self .block .w-screen .flex .flex-col .justify-around>
 		<slot>
