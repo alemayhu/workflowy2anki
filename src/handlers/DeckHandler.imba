@@ -27,24 +27,39 @@ export default class DeckHandler
 		return null if !names
 		names.first().text()
 
-	def handleHTML contents, deckName = null
-		self.style = /<style[^>]*>([^<]+)<\/style>/i.exec(contents)[1]
-		const inputType = 'HTML'
-		const dom = cheerio.load(contents)
-		let name = dom('title').text()
-		name ||= worklflowyName(dom)
+	# TODO: check for more places where this can be used
+	def  findNullIndex coll, field
+		return coll.findIndex do |x| x[field] == null
 
-		if self.style
-			self.style = appendDefaultStyle(style)
+	def handleHTML contents, deckName = null
+		let style = /<style[^>]*>([^<]+)<\/style>/i.exec(contents)[1]
+		const dom = cheerio.load(contents)
+		self.name = worklflowyName(dom)
+
+		if style
+			style = appendDefaultStyle(style)
 			
 		const list_items = dom('body ul').first().children().toArray()
-		if !list_items
-			return null
-		self.cards = list_items.map do |li|
-			const el = dom(li)
-			const front = el.find('.name .innerContentContainer').first()
-			const back = el.find('ul').first().html()
-			return {name: front, backSide: back}
+		let i = 0
+
+		for deck of list_items
+			for field of deck.children
+				if field.name == 'span'
+					self.decks.push({name: dom(field).text(), cards: [], style: style})
+					continue
+				
+				if field.name == 'ul' 
+					for card of field.children
+						if card.name && card.name.trim().length > 0
+							for part of card.children
+								const notSetBackSide = self.findNullIndex(self.decks[i].cards, "backSide")								
+								if notSetBackSide > -1
+									const text = dom(part).text().trim()
+									if text
+										self.decks[i].cards[notSetBackSide].backSide = text                
+								else if part.name == 'span'
+									self.decks[i].cards.push({name: dom(part).text(), backSide: null})
+			i = i + 1
 	
 	def handleText contents, deckName = null
 		const lines = contents.split('\n')

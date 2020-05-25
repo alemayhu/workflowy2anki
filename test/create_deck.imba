@@ -7,14 +7,12 @@ import ExpressionHelper from '../src/handlers/ExpressionHelper'
 
 import {eq} from './utils'
 
-def test_fixture file_name, deck_name, card_count, files = {}, expectStyle = true
+def test_fixture file_name, deck_name, card_count, files = {}
 	try
 		const file_path = path.join(__dirname, "fixtures", file_name)
 		const example = fs.readFileSync(file_path).toString()
 		let builder = DeckHandler.new()
 		await builder.build(example)
-
-		eq(builder.decks[0].style != undefined, expectStyle, "Style is not set")
 
 		eq(builder.name, deck_name, 'comparing deck names')
 
@@ -35,6 +33,7 @@ def main
 
 	# Testing multiple decks
 	await test_fixture('multi-deck-workflowy-export.txt', 'Workflowy 2 Anki', 6, [], false)
+	await test_fixture('multi-deck-workflowy-export.html', 'Workflowy 2 Anki', 6, [], false)
 
 	process.exit(0)
 	# Single decks
