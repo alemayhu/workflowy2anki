@@ -1,0 +1,17 @@
+Workflowy 2 Anki
+
+- Deck Title
+  - Card 1, side 1
+  - Card 1, side 2
+  - Card 2, side 1
+  - Card 2, side 2
+- Deck Title
+  - Card 1, side 1
+    - Card 1, side 2
+  - Card 2, side 1
+    - Card 2, side 2
+- Deck Title
+  - Card 1, side 1
+    "Card 1, side 2"
+  - Card 2, side 1
+    "Card 2, side 2"
