@@ -37,22 +37,14 @@ export default class DeckHandler
 		if self.style
 			self.style = appendDefaultStyle(style)
 			
-		const toggleList = dom('.toggle li').toArray()
-		let cards = toggleList.map do |t|
-			const toggle = dom(t).find('details')
-			const summary = toggle.find('summary').html()
-			const backSide = toggle.html()
-			return {name: summary, backSide: backSide}
-
-		if cards.length == 0
-			const list_items = dom('body ul').first().children().toArray()
-			if !list_items
-				return null
-			cards = list_items.map do |li|
-				const el = dom(li)
-				const front = el.find('.name .innerContentContainer').first()
-				const back = el.find('ul').first().html()
-				return {name: front, backSide: back}
+		const list_items = dom('body ul').first().children().toArray()
+		if !list_items
+			return null
+		self.cards = list_items.map do |li|
+			const el = dom(li)
+			const front = el.find('.name .innerContentContainer').first()
+			const back = el.find('ul').first().html()
+			return {name: front, backSide: back}
 	
 	def handleText contents, deckName = null
 		const lines = contents.split('\n')
