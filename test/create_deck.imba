@@ -16,6 +16,7 @@ def test_fixture file_name, deck_name, card_count, files = {}
 
 		eq(builder.name, deck_name, 'comparing deck names')
 
+		console.log('builder.decks', builder.decks)
 		const count = builder.decks.map(do $1.cards.length).reduce(do |lhs, rhs| lhs + rhs)
 
 		eq(count, card_count, 'comparing deck count')
@@ -31,16 +32,9 @@ def main
 	console.time('execution time')
 	console.log('Running tests')
 
-	# Testing multiple decks
 	await test_fixture('multi-deck-workflowy-export.txt', 'Workflowy 2 Anki', 6, [], false)
 	await test_fixture('multi-deck-workflowy-export.html', 'Workflowy 2 Anki', 6, [], false)
-
-	process.exit(0)
-	# Single decks
-	await test_fixture('pasted.txt', 'List of Scandinavian Countries and Nordic Region', 5, [], false)
-	await test_fixture('workflowy-export.opml', 'List of Scandinavian Countries and Nordic Region', 5, [], false)
-	await test_fixture('workflowy-export.txt', 'List of Scandinavian Countries and Nordic Region', 5, [], false)
-	await test_fixture('workflowy-export.html', 'DNS flashcards', 2)
+	# await test_fixture('multi-deck-workflowy-export.opml', 'Workflowy 2 Anki', 6, [], false)
 
 	console.log('All assertions done 👍🏽')
 	console.timeEnd('execution time')

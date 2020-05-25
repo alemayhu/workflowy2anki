@@ -75,14 +75,15 @@ export default class DeckHandler
 				continue
 			
 			const currentDeck = self.decks[i]
-			if line.match(/^\s{2}-/)
-				const unsetBackSide = currentDeck.cards.findIndex do $1.backSide == null
+			console.log('line', line)
+			if line.match(/^\s{2}-/)	
+				const unsetBackSide = self.findNullIndex(currentDeck.cards, 'backSide')
 				if unsetBackSide > -1
 					currentDeck.cards[unsetBackSide].backSide = line.replace('- ', '').trim()
 				else
 					currentDeck.cards.push({name: line.replace('- ', '').trim(), backSide: null})
 			else
-				const unsetBackSide = currentDeck.cards.findIndex do $1.backSide == null
+				const unsetBackSide = self.findNullIndex(currentDeck.cards, 'backSide')
 				if unsetBackSide > -1
 					currentDeck.cards[unsetBackSide].backSide = line.replace('- ', '').trim()
 				else
@@ -129,6 +130,7 @@ export default class DeckHandler
 			for card in deck.cards
 				// For now treat Latex as text and wrap it around.
 				// This is fragile thougg and won't handle multiline properly
+				console.log('card', card)
 				if ExpressionHelper.latex?(card.backSide)
 					card.backSide = "[latex]{card.backSide.trim()}[/latex]"
 				exporter.addCard(card.name, card.backSide)
