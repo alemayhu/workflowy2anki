@@ -15,8 +15,9 @@ tag home-page
 			<page-content .(p:4 display:block) .justify-center=(state == 'uploading') .items-center=(state == 'uploading')>
 				if state == 'ready'
 					<p .py-6 .text-center .text-xl>
-						"Convert WorkFlowy "
-						<a .text-blue-700 .underline href="https://www.youtube.com/watch?v=CSmbnaPZVHE"> "outlines "
+						"Convert "
+						<a .text-blue-600 href="http://workflowy.com/"> "WorkFlowy "
+						<a .text-black .underline href="https://www.youtube.com/watch?v=CSmbnaPZVHE"> "outlines "
 						" to Anki cards easily."
 					<div .h-32 .flex .items-center .justify-center :click.clickButton>
 						<n2a-button> "Upload WorkFlowy export"
