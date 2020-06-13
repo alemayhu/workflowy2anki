@@ -28,6 +28,8 @@ export default class ExpressionHelper
 		input.replace(/#\s?/, '')
 	
 	static def isLatex backSide
+		return false if !backSide
+		
 		const l = backSide.trim()
 		l.match(/^\\/) or l.match(/^\$\$/) or l.match(/{{/)
 	

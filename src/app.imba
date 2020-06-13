@@ -40,40 +40,36 @@ tag app-root
 	// TODO: refactor DRY
 	def fileuploaded event
 		self.state = 'uploading'
-		try
-			const files = event.target.files
+		imba.commit()
+		const files = event.target.files
 
-			if files.length > 1
-				window.alert('Sorry only one file at a time, contact if this is annoying you')
-				self.state = 'ready'
-				return
-			for file in files
-				if file.name.match(/\.zip$/)
-					const zip_handler = ZipHandler.new()
-					const _ = await zip_handler.build(file)
-					for file_name in zip_handler.filenames()
-						if ExpressionHelper.document?(file_name)
-							const deck = DeckHandler.new()
-							await deck.build(zip_handler.files[file_name])
-							self.packages = await deck.apkg()
-							state = 'download'
-			if packages.length == 0
-				# Handle workflowy
-				const file = files[0]
-				const file_name = file.name
-				console.log(file.toString())
-				const reader = FileReader.new()
-				reader.onload = do 
-					const deck = DeckHandler.new()
-					await deck.build(reader.result)
-					self.packages = await deck.apkg()
-					state = 'download'
-					imba.commit()
-				reader.readAsText(file)
-
-		catch e
-			console.error(e)
-			window.alert("Sorry something went wrong. Send this message to the developer. Error: {e.message}")		
+		if files.length > 1
+			window.alert('Sorry only one file at a time, contact if this is annoying you')
+			self.state = 'ready'
+			return
+		for file in files
+			if file.name.match(/\.zip$/)
+				const zip_handler = ZipHandler.new()
+				const _ = await zip_handler.build(file)
+				for file_name in zip_handler.filenames()
+					if ExpressionHelper.document?(file_name)
+						const deck = DeckHandler.new()
+						await deck.build(zip_handler.files[file_name])
+						self.packages = await deck.apkg()
+						state = 'download'
+		if packages.length == 0
+			# Handle workflowy
+			const file = files[0]
+			const file_name = file.name
+			console.log(file.toString())
+			const reader = FileReader.new()
+			reader.onload = do 
+				const deck = DeckHandler.new()
+				await deck.build(reader.result)
+				self.packages = await deck.apkg()
+				state = 'download'
+				imba.commit()
+			reader.readAsText(file)
 
 	def downloadDeck
 		try
