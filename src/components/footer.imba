@@ -9,5 +9,5 @@ tag n2a-footer
 		<div>
 			<p> 
 				"You can support the project by "
-				<a href="http://patreon.com/scanf"> "becoming a sponsor / backer on "
+				<a href="http://patreon.com/ccscanf"> "becoming a sponsor / backer on "
 				<span .text-orange-700> "Patreon"
