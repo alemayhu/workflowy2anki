@@ -108,7 +108,7 @@ export default class DeckHandler
 			i = i + 2
 		
 		console.log('cards', cards)
-		{name, cards, inputType, style}
+		self.decks.push({name, cards, style, inputType})
 
 	def cleanStyle s
 		// TODO: fix twemoji pdf font issues
