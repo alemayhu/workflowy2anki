@@ -9,6 +9,8 @@ test('formatted', t => {
 	const reader = new DeckReader();
 	const decks = reader.readFormatted(data);
 
+	// fs.writeFileSync('x.output.json', JSON.stringify(decks, null, 2));
+
 	t.assert(decks[0].name === 'List of Scandinavian Countries and Nordic Region');
 	t.assert(decks[1].name === 'Workflowy 2 Anki');
 	t.assert(decks[2].name === 'Workflowy 2 Anki::Deck Title (flat)');
