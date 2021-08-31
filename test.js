@@ -1,23 +1,96 @@
+const fs = require('fs');
+
 const test = require('ava');
 
-test('foo', t => {
-	t.pass();
+test('formatted', t => {
+	const data = fs.readFileSync("./fixtures/WF - Export - 210831-125401.txt").toString();
+	const lines = data.split("\n");
+	let decks = [];
+
+	let currentDeckIndex = -1;
+	console.log(lines, 'lines');
+	let parent = null;
+
+	const end = lines.length - 1;
+	for (const line of lines) {
+		console.log("line ->", line);
+		const currentDepth = line.search(/\S/);
+		// first character is dash - must be top level then due to indentation
+		if (currentDepth === 0) {
+			let deck = { name: line.replace(/^-/g, '').trim(), cards: [] };
+			currentDeckIndex++;
+			decks.push(deck);
+			parent = deck.name;
+			continue;
+		}
+		const currentIndex = lines.indexOf(line);
+		if (currentIndex + 1 < end) {
+			const nextLine = lines[currentIndex + 1];
+			const nextDepth = nextLine.search(/\S/);
+			if (currentIndex + 2 < end) {
+				const afterNextLine = lines[currentIndex + 2];
+				const afterNextDepth = afterNextLine.search(/\S/);
+				if (currentDepth === afterNextDepth || currentDepth === nextDepth + 2 || currentDepth === nextDepth - 2) {
+					// Just one on the same level
+				} else if (currentDepth !== afterNextDepth) {
+					// let deck = { name: `${parent}::${line.replace(/^-/g, '').trim()}`, cards: [] };
+					// currentDeckIndex++;
+					// decks.push(deck);
+					console.log('this is a deck?', line);
+				}
+
+				console.log('current::', line, '::', currentDepth);
+				console.log('next', nextLine, '::', nextDepth);
+				console.log('afterNext', afterNextLine, '::', afterNextDepth);
+			}
+			// if (nextLine) {
+			// 	const nextDepth = nextLine.search(/\S/);
+			// 	console.log('d', depth, 'nd', nextDepth, '----', line);
+			// 	if (depth + 2 < nextDepth) {
+			// 		console.log('ADD', line);
+			// 		let deck = { name: line.replace(/^-/g, '').trim(), cards: [] };
+			// 		currentDeckIndex++;
+			// 		decks.push(deck);
+
+			// 		continue;
+			// 	}
+			// }
+
+		}
+		// Get the flashcard based on the indentation
+		const firstEmptyBackIndex = decks[currentDeckIndex].cards.findIndex(c => c.back === null);
+		if (firstEmptyBackIndex > -1) {
+			decks[currentDeckIndex].cards[firstEmptyBackIndex].back = line.trim().replace(/^-/g, '').trim();
+		} else {
+			decks[currentDeckIndex].cards.push({ front: line.replace(/^-/g, '').trim(), back: null });
+		}
+	}
+
+	t.assert(decks[0].name === 'List of Scandinavian Countries and Nordic Region');
+
+	t.assert(decks[1].name === 'Workflowy 2 Anki');
+	t.assert(decks[2].name === 'Workflowy 2 Anki::Deck Title (flat)');
+	t.assert(decks[3].name === 'Workflowy 2 Anki::Deck Title (without note)');
+	t.assert(decks[3].name === 'Workflowy 2 Anki::Deck Title (with note)');
+
+
+	t.assert(decks[0].cards.length === 5);
+	t.assert(decks[1].cards.length === 5);
+
+	console.log('data xxx');
+	console.log(decks[1]);
+
+	t.assert(data.length > 0);
 });
 
-test('bar', async t => {
-	const bar = Promise.resolve('bar');
-	t.is(await bar, 'bar');
-});
-
-
-test.skip('formatted', t => {
-	t.fail("to be implemented");
-});
-
-test('Plain text', t => {
+test.skip('Plain text', t => {
 	t.fail("to be implemented");
 });
 
 test.skip('OPML', t => {
 	t.fail("to be implemented");
+});
+
+test.skip('emoji support', t => {
+	t.fail("not supported yet 🃏");
 });
