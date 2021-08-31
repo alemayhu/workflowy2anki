@@ -13,7 +13,9 @@ test('formatted', t => {
 
 	const end = lines.length - 1;
 	for (const line of lines) {
-		console.log("line ->", line);
+		if (!line || line.trim() === '') {
+			continue;
+		}
 		const currentDepth = line.search(/\S/);
 		// first character is dash - must be top level then due to indentation
 		if (currentDepth === 0) {
@@ -57,21 +59,16 @@ test('formatted', t => {
 	}
 
 	t.assert(decks[0].name === 'List of Scandinavian Countries and Nordic Region');
-
 	t.assert(decks[1].name === 'Workflowy 2 Anki');
 	t.assert(decks[2].name === 'Workflowy 2 Anki::Deck Title (flat)');
 	t.assert(decks[3].name === 'Workflowy 2 Anki::Deck Title (without note)');
 	t.assert(decks[4].name === 'Workflowy 2 Anki::Deck Title (with note)');
 
-
 	t.assert(decks[0].cards.length === 5);
 	t.assert(decks[1].cards.length === 0);
 	t.assert(decks[2].cards.length === 2);
 	t.assert(decks[3].cards.length === 2);
-
-	console.log('decks4', decks[4].cards);
 	t.assert(decks[4].cards.length === 2);
-
 	t.assert(decks.length === 5);
 });
 
