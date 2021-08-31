@@ -1,68 +1,34 @@
-# WorkFlowy 2 Anki
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/4d818752-c360-4ca5-afa4-567add475a7b/deploy-status)](https://app.netlify.com/sites/eloquent-lamport-a418b8/deploys)
+## Getting Started
 
-This is tool a to let you convert your WorkFlowy outlines to Anki cards easily.
+First, run the development server:
 
-## Background
-
-TODO:
-
-## Roadmap
-
-TODO:
-
-## Contributing
-
-Your contributions are welcome but please try to be constructive and follow the
-[code of conduct](./CODE_OF_CONDUCT.md).
-
-## Support
-
-You can support the project by [becoming a sponsor / backer on Patreon](http://patreon.com/ccscanf).
-
-## Development
-
-Please note that the Imba programming language v2 is currently in alpha so expect
-to see things breaking when you try stuff. When that is said, see below on how
-to actually run this :smile:
-
-> I am assuming you have Node.js already installed, if not then see their website on how todo that https://nodejs.org/en/
-
-First make sure you have the dependencies installed
-```
-yarn # npm run install
-```
-
-Then in another terminal run 
-
-```
+```bash
+npm run dev
+# or
 yarn dev
 ```
 
-The previous command will continously build the project.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-To actually see the app running you need to either visit the local url in a browser or launch the app with
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-```
-yarn start
-```
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-## License
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-Unless otherwise specified in the source:
+## Learn More
 
-[MIT](./LICENSE)
+To learn more about Next.js, take a look at the following resources:
 
-Copyright (c) 2020, Alexander Alemayhu
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Credits
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-This would be super hard if it were not for the following projects:
+## Deploy on Vercel
 
-- [anki-apkg-export](https://github.com/repeat-space/anki-apkg-export)
-- [FileSaver.js](https://github.com/eligrey/FileSaver.js/)
-- [jszip](https://github.com/Stuk/jszip)
-- [Imba](https://github.com/imba/imba)
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-See the [package.json](./package.json) file for anything I missed.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
