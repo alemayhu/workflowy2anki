@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "ava",
-    "tt": "ava -w"
+    "tt": "ava -w --verbose"
   },
   "dependencies": {
     "next": "11.1.2",
