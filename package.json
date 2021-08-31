@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "ava",
+    "tt": "ava -w"
   },
   "dependencies": {
     "next": "11.1.2",
@@ -14,6 +16,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "ava": "^3.15.0",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2"
   }
