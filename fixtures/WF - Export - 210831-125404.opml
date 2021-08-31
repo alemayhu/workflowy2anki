@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<opml version="2.0">
+  <head>
+    <ownerEmail>
+      alexander@alemayhu.com
+    </ownerEmail>
+  </head>
+  <body>
+    <outline text="List of Scandinavian Countries and Nordic Region">
+      <outline text="🇩🇰 ">
+        <outline text="Denmark" />
+      </outline>
+      <outline text="🇳🇴 ">
+        <outline text="Norway" />
+      </outline>
+      <outline text="🇸🇪 ">
+        <outline text="Sweden" />
+      </outline>
+      <outline text="🇫🇮 ">
+        <outline text="Finland" />
+      </outline>
+      <outline text="🇮🇸 ">
+        <outline text=" Iceland" />
+      </outline>
+    </outline>
+    <outline text="Workflowy 2 Anki">
+      <outline text="Deck Title (flat)">
+        <outline text="Card 1, side 1" />
+        <outline text="Card 1, side 2" />
+        <outline text="Card 2, side 1" />
+        <outline text="Card 2, side 2" />
+      </outline>
+      <outline text="Deck Title (without note)">
+        <outline text="Card 1, side 1">
+          <outline text="Card 1, side 2" />
+        </outline>
+        <outline text="Card 2, side 1">
+          <outline text="Card 2, side 2" />
+        </outline>
+      </outline>
+      <outline text="Deck Title (with note)">
+        <outline text="Card 1, side 1" _note="Card 1, side 2" />
+        <outline text="Card 2, side 1" _note="Card 2, side 2" />
+      </outline>
+    </outline>
+  </body>
+</opml>

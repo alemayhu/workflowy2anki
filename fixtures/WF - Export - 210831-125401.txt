@@ -1,0 +1,27 @@
+- List of Scandinavian Countries and Nordic Region
+  - 🇩🇰 
+    - Denmark
+  - 🇳🇴 
+    - Norway
+  - 🇸🇪 
+    - Sweden
+  - 🇫🇮 
+    - Finland
+  - 🇮🇸 
+    -  Iceland
+- Workflowy 2 Anki
+  - Deck Title (flat)
+    - Card 1, side 1
+    - Card 1, side 2
+    - Card 2, side 1
+    - Card 2, side 2
+  - Deck Title (without note)
+    - Card 1, side 1
+      - Card 1, side 2
+    - Card 2, side 1
+      - Card 2, side 2
+  - Deck Title (with note)
+    - Card 1, side 1
+      "Card 1, side 2"
+    - Card 2, side 1
+      "Card 2, side 2"
