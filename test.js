@@ -21,6 +21,10 @@ test('formatted', t => {
 	t.assert(decks[3].cards.length === 2);
 	t.assert(decks[4].cards.length === 2);
 	t.assert(decks.length === 5);
+
+	// Check note variant is handled properly
+	t.assert(decks[4].cards[0].front === 'Card 1, side 1');
+	t.assert(decks[4].cards[0].back === 'Card 1, side 2');
 });
 
 test.skip('Plain text', t => {
