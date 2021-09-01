@@ -4,10 +4,10 @@ const test = require('ava');
 
 const { DeckReader } = require('./lib/deck-reader');
 
-test('formatted', t => {
+test('Plain text', t => {
 	const data = fs.readFileSync("./fixtures/WF - Export - 210831-125401.txt").toString();
 	const reader = new DeckReader();
-	const decks = reader.readFormatted(data);
+	const decks = reader.readText(data);
 
 	// fs.writeFileSync('x.output.json', JSON.stringify(decks, null, 2));
 
@@ -29,7 +29,7 @@ test('formatted', t => {
 	t.assert(decks[4].cards[0].back === 'Card 1, side 2');
 });
 
-test.skip('Plain text', t => {
+test.skip('Formatted - HTML', t => {
 	t.fail("to be implemented");
 });
 
