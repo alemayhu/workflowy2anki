@@ -4,10 +4,7 @@ const test = require('ava');
 
 const { DeckReader } = require('./lib/deck-reader');
 
-test('Plain text', t => {
-	const data = fs.readFileSync("./fixtures/WF - Export - 210831-125401.txt").toString();
-	const reader = new DeckReader();
-	const decks = reader.readText(data);
+function makeAssertions(t, decks) {
 
 	// fs.writeFileSync('x.output.json', JSON.stringify(decks, null, 2));
 
@@ -27,6 +24,13 @@ test('Plain text', t => {
 	// Check note variant is handled properly
 	t.assert(decks[4].cards[0].front === 'Card 1, side 1');
 	t.assert(decks[4].cards[0].back === 'Card 1, side 2');
+}
+
+test('Plain text', t => {
+	const data = fs.readFileSync("./fixtures/WF - Export - 210831-125401.txt").toString();
+	const reader = new DeckReader();
+	const decks = reader.readText(data);
+	makeAssertions(t, decks);
 });
 
 test.skip('Formatted - HTML', t => {
