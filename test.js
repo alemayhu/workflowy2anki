@@ -33,8 +33,11 @@ test('Plain text', t => {
 	makeAssertions(t, decks);
 });
 
-test.skip('Formatted - HTML', t => {
-	t.fail("to be implemented");
+test('Formatted - HTML', t => {
+	const data = fs.readFileSync("./fixtures/WF - Export - 210831-125359.html").toString();
+	const reader = new DeckReader();
+	const decks = reader.readHTML(data);
+	makeAssertions(t, decks);
 });
 
 test.skip('OPML', t => {
