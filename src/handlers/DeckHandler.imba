@@ -6,16 +6,13 @@ import cheerio from 'cheerio'
 
 import ExpressionHelper from './ExpressionHelper'
 
+import {DeckReader} from 'workflow2anki'
+
 export default class DeckHandler
 
 	prop decks = []
 
 	def build contents, deckName = null
-		if contents.trim().match(/^\<\?xml/)
-			self.handleOPML(contents, deckName)
-		elif contents.trim().match(/^\</)
-			self.handleHTML(contents, deckName)
-		else
 			self.handleText(contents, deckName)
 	
 	def appendDefaultStyle s
@@ -31,85 +28,13 @@ export default class DeckHandler
 	def  findNullIndex coll, field
 		return coll.findIndex do |x| x[field] == null
 
-	def handleHTML contents, deckName = null
-		let style = /<style[^>]*>([^<]+)<\/style>/i.exec(contents)[1]
-		const dom = cheerio.load(contents)
-		self.name = worklflowyName(dom)
-
-		if style
-			style = appendDefaultStyle(style)
-			
-		const list_items = dom('body ul').first().children().toArray()
-		let i = 0
-
-		for deck of list_items
-			for field of deck.children
-				if field.name == 'span'
-					self.decks.push({name: dom(field).text(), cards: [], style: style})
-					continue
-				
-				if field.name == 'ul' 
-					for card of field.children
-						if card.name && card.name.trim().length > 0
-							for part of card.children
-								const notSetBackSide = self.findNullIndex(self.decks[i].cards, "backSide")								
-								if notSetBackSide > -1
-									const text = dom(part).html()
-									if text
-										self.decks[i].cards[notSetBackSide].backSide = text                
-								else if part.name == 'span'
-									self.decks[i].cards.push({name: dom(part).html(), backSide: null})
-			i = i + 1
-	
 	def handleText contents, deckName = null
-		const lines = contents.split('\n')
-		const inputType = 'text'
-		self.name = lines.shift()
-		let cards = []
-		let i = -1
-		for line of lines
-			continue if !line
-			if line.match(/^-/)
-				self.decks.push({name: line.replace('-', '').trim(), cards: []})
-				i = i + 1
-				continue
-			
-			const currentDeck = self.decks[i]
-			console.log('line', line)
-			if line.match(/^\s{2}-/)	
-				const unsetBackSide = self.findNullIndex(currentDeck.cards, 'backSide')
-				if unsetBackSide > -1
-					currentDeck.cards[unsetBackSide].backSide = line.replace('- ', '').trim()
-				else
-					currentDeck.cards.push({name: line.replace('- ', '').trim(), backSide: null})
-			else
-				const unsetBackSide = self.findNullIndex(currentDeck.cards, 'backSide')
-				if unsetBackSide > -1
-					currentDeck.cards[unsetBackSide].backSide = line.replace('- ', '').trim()
-				else
-					throw Error.new('unsupported line '+line)
+		const reader = DeckReader.new()
+		const decks = reader.readText(contents)
+		self.decks = decks
+		if self.decks.length > 0
+			self.name = self.decks[0].name
 	
-	def handleOPML contents, deckName = null
-		const dom = cheerio.load(contents)
-		const outline = dom('body outline')
-		const name = outline.first().attr('text')
-		let outlines = dom('body outline outline').toArray()
-		const inputType = 'OPML'
-		const style = null
-
-
-		const cards = []
-		let i = 0
-		while i < outlines.length
-			const el = dom(outlines[i])
-			const name = el.attr('text').trim()
-			const backSide = el.children().first().attr('text')
-			cards.push({name: name, backSide: backSide})
-			i = i + 2
-		
-		console.log('cards', cards)
-		self.decks.push({name, cards, style, inputType})
-
 	def cleanStyle s
 		// TODO: fix twemoji pdf font issues
 		const style = s.split('\n').filter do |line|
@@ -133,7 +58,7 @@ export default class DeckHandler
 				console.log('card', card)
 				if ExpressionHelper.latex?(card.backSide)
 					card.backSide = "[latex]{card.backSide.trim()}[/latex]"
-				exporter.addCard(card.name, card.backSide)
+				exporter.addCard(card.front, card.back)
 
 			const zip = await exporter.save()
 			zipFiles.push({name: "{deck.name}.apkg", apkg: zip})

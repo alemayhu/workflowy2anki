@@ -21,7 +21,7 @@ tag home-page
 						" to Anki cards easily."
 					<div .h-32 .flex .items-center .justify-center :click.clickButton>
 						<n2a-button> "Upload WorkFlowy export"
-						<input #upload-button .hidden :change.fileuploaded type="file" name="resume" accept=".zip,.html,.txt,.opml">
+						<input #upload-button .hidden :change.fileuploaded type="file" name="resume" accept=".txt">
 					# <div .flex .items-center .justify-center .flex-col>
 					# 	<h2 .text-2xl> "Alternatively paste below"
 					# 	<div .textarea-container>

@@ -33,7 +33,7 @@ def main
 	console.log('Running tests')
 
 	await test_fixture('multi-deck-workflowy-export.txt', 'Workflowy 2 Anki', 6, [], false)
-	await test_fixture('multi-deck-workflowy-export.html', 'Workflowy 2 Anki', 6, [], false)
+	# await test_fixture('multi-deck-workflowy-export.html', 'Workflowy 2 Anki', 6, [], false)
 	# await test_fixture('multi-deck-workflowy-export.opml', 'Workflowy 2 Anki', 6, [], false)
 
 	console.log('All assertions done 👍🏽')
