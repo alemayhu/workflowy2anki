@@ -35,7 +35,8 @@
     "postcss-loader": "^3.0.0",
     "script-loader": "^0.7.2",
     "style-loader": "^1.2.1",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.4.6",
+    "workflow2anki": "0.0.1"
   },
   "devDependencies": {
     "webpack": "^4.43.0",
