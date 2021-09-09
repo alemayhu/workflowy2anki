@@ -1,25 +1,68 @@
-# Workflowy to Anki
+# WorkFlowy 2 Anki
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4d818752-c360-4ca5-afa4-567add475a7b/deploy-status)](https://app.netlify.com/sites/eloquent-lamport-a418b8/deploys)
 
 This is tool a to let you convert your WorkFlowy outlines to Anki cards easily.
 
+## Background
+
+TODO:
+
+## Roadmap
+
+TODO:
+
+## Contributing
+
+Your contributions are welcome but please try to be constructive and follow the
+[code of conduct](./CODE_OF_CONDUCT.md).
+
+## Support
+
+You can support the project by [becoming a sponsor / backer on Patreon](http://patreon.com/ccscanf).
+
 ## Development
 
-First, run the development server:
+Please note that the Imba programming language v2 is currently in alpha so expect
+to see things breaking when you try stuff. When that is said, see below on how
+to actually run this :smile:
 
-```bash
-npm run dev
-# or
+> I am assuming you have Node.js already installed, if not then see their website on how todo that https://nodejs.org/en/
+
+First make sure you have the dependencies installed
+```
+yarn # npm run install
+```
+
+Then in another terminal run 
+
+```
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The previous command will continously build the project.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+To actually see the app running you need to either visit the local url in a browser or launch the app with
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
+yarn start
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## License
+
+Unless otherwise specified in the source:
+
+[MIT](./LICENSE)
+
+Copyright (c) 2020, Alexander Alemayhu
 
 ## Credits
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This would be super hard if it were not for the following projects:
+
+- [anki-apkg-export](https://github.com/repeat-space/anki-apkg-export)
+- [FileSaver.js](https://github.com/eligrey/FileSaver.js/)
+- [jszip](https://github.com/Stuk/jszip)
+- [Imba](https://github.com/imba/imba)
+
+See the [package.json](./package.json) file for anything I missed.
