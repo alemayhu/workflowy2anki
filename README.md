@@ -1,25 +1,12 @@
+Unfortunately, this project is no longer maintained.
+
+I have other priorities in my life and no longer have time to update this project. Email me at [alexander@alemayhu.com](mailto:alexander@alemayhu.com) if you'd like to reach me.
+
 # WorkFlowy 2 Anki
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4d818752-c360-4ca5-afa4-567add475a7b/deploy-status)](https://app.netlify.com/sites/eloquent-lamport-a418b8/deploys)
 
 This is tool a to let you convert your WorkFlowy outlines to Anki cards easily.
-
-## Background
-
-TODO:
-
-## Roadmap
-
-TODO:
-
-## Contributing
-
-Your contributions are welcome but please try to be constructive and follow the
-[code of conduct](./CODE_OF_CONDUCT.md).
-
-## Support
-
-You can support the project by [becoming a sponsor / backer on Patreon](http://patreon.com/ccscanf).
 
 ## Development
 
